@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import logo from './logo.jpg';
 import './App.css';
 
@@ -31,25 +30,38 @@ class CatView extends React.Component {
     };
   }
   patoune() {
-    axios.put(`http://localhost:8080/cat/${this.props.cat}`, {
-      patounes: [ this.state.catName ]
-    }).then(req => {
+    fetch(`http://localhost:8080/cats/${this.props.cat}`, {
+      method: "PUT",
+      headers: new Headers({
+		    'Content-Type': 'application/json'
+	    }),
+      body: JSON.stringify({
+        patounes: [ this.state.catName ]
+      })
+    }).then(response => {
       this.displayNext()
     });
   }
   griffoune() {
-    axios.put(`http://localhost:8080/cat/${this.props.cat}`, {
-      griffounes: [ this.state.catName ]
-    }).then(req => {
+    fetch(`http://localhost:8080/cats/${this.props.cat}`, {
+      method: "PUT",
+      headers: new Headers({
+		    'Content-Type': 'application/json'
+	    }),
+      body: JSON.stringify({
+        griffounes: [ this.state.catName ]
+      })
+    }).then(response => {
       this.displayNext()
     });
   }
   displayNext() {
-    axios.get(`http://localhost:8080/cat/${this.props.cat}/candidate/first`)
-      .then(res => {
+    fetch(`http://localhost:8080/cats/${this.props.cat}/candidates/first`)
+      .then(response => response.json())
+      .then(data => {
         this.setState({
-          catName: res.data.name,
-          pictureUrl: res.data.picture
+          catName: data.name,
+          pictureUrl: data.picture
         });
       });
   }
