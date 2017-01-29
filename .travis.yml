@@ -1,0 +1,13 @@
+language: node_js
+node_js: node
+after_success:
+- yarn build
+- mv build catinder-front
+- tar -czvf catinder-front.tar.gz catinder-front
+deploy:
+  provider: releases
+  api_key:
+    secure: Kbu1KjyKwjNmvSG8aBB7GQJaQbxCtE98dQn0FvO6MwsWcmMzMs+ZJNZCkRw1j4Yt3LB/cqI2jYnnzLLcEXd0pSsVgWVLI2E3fUS4UH32EhbnFHOBRGckkxYnJU0zObOWCjDGhr0Uua/o/PMgOfB43FUr7n0UZ52x+gg3YwFxaEUeOqt7oc9estSU5dPAjRL+Q4ytfGDHy7my8TJZuggFhSOr8+ccVTxHB/2I0eBMSEEUUaIG3dJcAUXv1HwOw+qbEGuG42iuL+HEV01FIUJwNVKv8v3Y4bIat7XDKTXIe31doEYLmXiQM1K3mePbDlUpVaMBGyklpubIY8rTvXlxDai5yCgDyYbmgp+g1CS4BBoKklVMB3RN3Yk9clIqTOHZ2/0KGxLgwMiKDSHeu7YIeWan6ZV12uyC+OLTPOfk2PBMq8k2/t9z5xyc/VhXN3RZuoYPUmdrnj3N7FJs4I1V3//WkYWRWTIz4Kl3JOJj+qsRBXpeFo4BtUF9pFvDY4ya6H8nekLeRklUQbt0oBQU36aoqb4kfCuPAdkRAi1kDRZ/wN/8sfqJwMf/rxU81x0iAbR7uIQu3Rd1JFgs7VBc2kFcnlc0yfLHHSI8aemlTQEve11UI2v5gbnERuBTDATqZt91528veBl+jyxeWc7Qz3Dg5CeD9bU3jKrFB2JSNkE=
+  file: catinder-front.tar.gz
+  on:
+    tags: true
