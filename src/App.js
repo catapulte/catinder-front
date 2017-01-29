@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import logo from './logo.jpg';
 import './App.css';
 
+const api = { catinder: "http://localhost:8080" }
+if (process.env.NODE_ENV === "production") {
+  api.catinder = "http://lolcat.passoire.net:8090"
+}
+
 class App extends Component {
   render() {
     return (
@@ -30,7 +35,7 @@ class CatView extends React.Component {
     };
   }
   patoune() {
-    fetch(`http://localhost:8080/cats/${this.props.cat}`, {
+    fetch(`${api.catinder}/cats/${this.props.cat}`, {
       method: "PUT",
       headers: new Headers({
 		    'Content-Type': 'application/json'
@@ -43,7 +48,7 @@ class CatView extends React.Component {
     });
   }
   griffoune() {
-    fetch(`http://localhost:8080/cats/${this.props.cat}`, {
+    fetch(`${api.catinder}/cats/${this.props.cat}`, {
       method: "PUT",
       headers: new Headers({
 		    'Content-Type': 'application/json'
@@ -56,7 +61,7 @@ class CatView extends React.Component {
     });
   }
   displayNext() {
-    fetch(`http://localhost:8080/cats/${this.props.cat}/candidates/first`)
+    fetch(`${api.catinder}/cats/${this.props.cat}/candidates/first`)
       .then(response => response.json())
       .then(data => {
         this.setState({
