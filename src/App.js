@@ -4,7 +4,7 @@ import './App.css';
 
 const api = { catinder: "http://localhost:8080" }
 if (process.env.NODE_ENV === "production") {
-  api.catinder = "http://lolcat.passoire.net:8090"
+  api.catinder = "https://catinder.lolcat.passoire.net"
 }
 
 class App extends Component {
