@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.jpg';
+import imagePatoune from './patoune.png';
+import imageGriffoune from './griffoune.png';
 import './App.css';
 
 const api = { catinder: "http://localhost:8080" }
@@ -78,9 +80,13 @@ class CatView extends React.Component {
       <div>
         <p>{this.state.catName}</p>
         <div>
-          <button onClick={this.patoune}>patoune</button>
-          <img src={this.state.pictureUrl} alt="{this.props.catName}" />
-          <button onClick={this.griffoune}>griffoune</button>
+          <a onClick={this.patoune} className="bloc">
+            <img src={imagePatoune} alt="patouner" />
+          </a>
+          <img src={this.state.pictureUrl} alt="{this.props.catName}" className="bloc" />
+          <a onClick={this.griffoune} className="bloc">
+            <img src={imageGriffoune} alt="griffouner" />
+          </a>
         </div>
       </div>
     );
