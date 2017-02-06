@@ -80,11 +80,11 @@ class CatView extends React.Component {
       <div>
         <p>{this.state.catName}</p>
         <div>
-          <a onClick={this.patoune} className="bloc">
+          <a href="#" onClick={this.patoune} className="bloc">
             <img src={imagePatoune} alt="patouner" />
           </a>
           <img src={this.state.pictureUrl} alt="{this.props.catName}" className="bloc" />
-          <a onClick={this.griffoune} className="bloc">
+          <a href="#" onClick={this.griffoune} className="bloc">
             <img src={imageGriffoune} alt="griffouner" />
           </a>
         </div>
